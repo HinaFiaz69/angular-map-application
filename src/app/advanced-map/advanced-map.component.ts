@@ -56,6 +56,11 @@ export class AdvancedMapComponent implements OnInit, OnDestroy {
     this.searchLocation(this.searchQuery)
   }
 
+  ngAfterViewInit() {
+    this.initMap();  // Now mapContainer is defined
+    this.setupSearch(); // Now searchInput is defined
+  }
+  
   ngOnDestroy() {
     this.destroy$.next()
     this.destroy$.complete()
