@@ -15,6 +15,7 @@
           "options": {
             "outputPath": "dist/angular-map-application",
             "index": "src/index.html",
+            "allowedCommonJsDependencies": ["mapbox-gl"],
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -94,5 +95,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "a87996fa-3c43-401b-9195-8e30898f4b94"
   }
 }

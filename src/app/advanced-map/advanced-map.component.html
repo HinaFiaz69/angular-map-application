@@ -1,0 +1,40 @@
+<div class="container">
+    <div *ngIf="isOffline" class="alert alert-danger">
+      <strong>You are offline.</strong> Please check your internet connection to use the map features.
+    </div>
+  
+    <form (ngSubmit)="onSubmit($event)" class="search-form">
+      <div class="input-group">
+        <input
+          #searchInput
+          type="text"
+          class="form-control"
+          placeholder="Search for a location..."
+          [(ngModel)]="searchQuery"
+          name="searchQuery"
+          [disabled]="loading || isOffline"
+        >
+        <button type="submit" class="btn btn-primary" [disabled]="loading || isOffline">
+          <span *ngIf="loading" class="spinner"></span>
+          Search
+        </button>
+      </div>
+    </form>
+  
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="location" class="location-info">
+      <h2>{{ location.display_name }}</h2>
+      <p>Found {{ restaurants.length }} restaurants nearby</p>
+    </div>
+  
+    <div #mapContainer class="map-container" [class.loading]="loading"></div>
+  
+    <div *ngIf="loading" class="loading-overlay">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  
+  
